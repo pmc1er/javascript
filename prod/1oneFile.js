@@ -1,6 +1,6 @@
 /*
  * PMC JavaScript Library V2.5
- * 13/04/2023 : AmÈlioration XMLHttpRequest
+ * 13/04/2023 : Am√©lioration XMLHttpRequest
  * 08/11/2024 : correctif array.removeValue et toggleClass
  * 05/12/2024 : correctif Base 64
  * 16/01/2025 : ajout PMC.utils.copy
@@ -20,11 +20,11 @@ function eval() {
       alert(msg);
 }
 */
-//DÈfinition du namespace
+//D√©finition du namespace
 if(typeof(PMC)=='undefined') {
    var PMC = {};
 }
-//Fonction dÈfinissant l'extension d'un objet
+//Fonction d√©finissant l'extension d'un objet
 (function () {
    PMC.utils = PMC.utils || {};
    //Test l'existance d'un objet ou d'une variable
@@ -172,7 +172,7 @@ Object.merge(PMC.utils, {
       "===": function(a, b){return a === b;},
       "!": function(a){return !a;}
    },
-   //Affichage rÈcursif de tous les objets
+   //Affichage r√©cursif de tous les objets
    print_r:function (oElem, nbmenu, maxmenu) {
       self.debug(print_r_html(oElem, nbmenu, maxmenu));
    },
@@ -207,13 +207,13 @@ Object.merge(PMC.utils, {
       return oElem;
    },
    //Affichage taille d'un fichier.
-   //En entrÈe : le nombre d'octets (73611)
-   //En sortie : la taille avec l'unitÈ (71.89 Ko)
+   //En entr√©e : le nombre d'octets (73611)
+   //En sortie : la taille avec l'unit√© (71.89 Ko)
    getSize:function(sizeInByte, precision=2) {
       var units = ['O', 'Ko', 'Mo', 'Go', 'To'];
       return sizeInByte==0 ? sizeInByte+" "+units[0] : Math.round(sizeInByte / Math.pow(1024, (i = Math.floor(Math.log(sizeInByte)/Math.log(1024)))), precision)+" "+units[i];
    },
-   //RÈcupÈration d'un ÈlÈment par son identifiant
+   //R√©cup√©ration d'un √©l√©ment par son identifiant
    getID:function () {
       if(!PMC.utils.navigator.nav_ok) {return function (){return null;};}
       if(PMC.utils.navigator.dom) {return function (sID){return document.getElementById(sID.id ? sID.id : sID);};}
@@ -221,7 +221,7 @@ Object.merge(PMC.utils, {
       else if(PMC.utils.navigator.ns4) {return function (sID){return document.layers(sID);};}
       else {return function (sID){alert('Erreur PMC.utils.getID :'+(sID.id?sID.id : sID)); return null;};}
    }(),
-   //RÈcupÈration d'un ÈlÈment par sa class
+   //R√©cup√©ration d'un √©l√©ment par sa class
    getClass:function (sClass, obj) {
       var ret=[];
       if(obj==null)
@@ -411,7 +411,7 @@ Object.merge(PMC.utils, {
       }
 //    return;
    },
-   //Affichage de caractËres ‡ partir de caractËres ASCII
+   //Affichage de caract√®res √† partir de caract√®res ASCII
    chr:function () {
       var ret="";
       self.forEach(arguments, function(elem) {
@@ -434,7 +434,7 @@ Object.merge(PMC.utils, {
       */
       return ret;
    },
-   //RÈcupÈration codes ASCII ‡ partir de caractËres
+   //R√©cup√©ration codes ASCII √† partir de caract√®res
    chrCode:function () {
       if(arguments.length==0) {
          return '';
@@ -467,7 +467,7 @@ Object.merge(PMC.utils, {
       }
       return ret;
    },
-   //Retourne un ÈlÈment ou plusieurs
+   //Retourne un √©l√©ment ou plusieurs
    $:function () {
       var elements=[];
       self.forEach(arguments, function(elem) {
@@ -490,15 +490,15 @@ Object.merge(PMC.utils, {
       */
       return arguments.length==1 ? elements[0] : elements;
    },
-   //Retourne un ÈlÈment ou plusieurs
+   //Retourne un √©l√©ment ou plusieurs
    $$:function (p, t) {
       return (p && t) ? p.getElementsByTagName(t) : (p ? p.childNodes() : null);
    },
-   //Retourne le premier ÈlÈment de trouvÈ
+   //Retourne le premier √©l√©ment de trouv√©
    $$1:function (p, t) {
       return self.$$(p, t) || null;
    },
-   //Affichage pour dÈbuggage
+   //Affichage pour d√©buggage
    debug:function () {
       var rsp=(arguments.length>0) ? arguments[0] : "";
       var arg=(arguments.length>1) ? arguments[1] : "a";
@@ -656,7 +656,7 @@ Object.merge(PMC.utils, {
       if(typeof(oObjet) != 'object' || oObjet == null) {
          return oObjet;
       }
-      //On appel le constructeur de l'instance source pour crÈe une nouvelle instance de la mÍme classe
+      //On appel le constructeur de l'instance source pour cr√©e une nouvelle instance de la m√™me classe
       var newInstance = new oObjet.constructor();
       for(var i in oObjet) {
          newInstance[i] = PMC.utils.clone(oObjet[i]);
@@ -687,8 +687,8 @@ Object.merge(PMC.utils, {
          //navigator.clipboard.writeText(range.select());
          var result = document.execCommand('copy');
          if (result) {
-            // La copie a rÈussi
-            //alert('CopiÈ !');
+            // La copie a r√©ussi
+            //alert('Copi√© !');
          }
       }
       catch(err) {
@@ -717,7 +717,7 @@ PMC.utils.isDefined=self.compose(self.op["!"], self.isUndefined);
 //---String, Number-------
 //---Date, Array, Math----
 //------------------------
-//Sur les chaÓnes de caractËres
+//Sur les cha√Ænes de caract√®res
 
 (function() {
 
@@ -805,11 +805,11 @@ Object.merge(String.prototype,{
    isNull:function(d) {return this==null ? d : this;},
    isNull2:function(a,b) {return this==null ? a : b;},
    rate:6.55957, //Taux de conversion entre FF et Euro
-   isArray:false, //DÈfinit si c'est un tableau
+   isArray:false, //D√©finit si c'est un tableau
    empty:function () {return this.length==0 || this==null;},
    patternDate:'^([1-9]|0[1-9]|[12][0-9]|3[01])[^0-9]*([1-9]|0[1-9]|1[0-2])[^0-9]*([0-9]{2,4})([ ]*([01][0-9]|2[0-3]|[0-9])[^0-9]*([0-4][0-9]|5[0-9]|[0-9])[^0-9]*([0-4][0-9]|5[0-9]|[0-9]))?$',
    HTML_ENTITIES: "&amp;&agrave;&aacute;&auml;&acirc;&egrave;&eacute;&euml;&ecirc;&igrave;&iacute;&iuml;&icirc;&ograve;&oacute;&ouml;&ocirc;&ugrave;&uacute;&uuml;&ucirc;&nbsp;&copy;&quot;&ccedil;&lt;&gt",
-   TEXT_ENTITIES: "&‡·‰‚ËÈÎÍÏÌÔÓÚÛˆÙ˘˙¸˚†©\"Á<> ",
+   TEXT_ENTITIES: "&√†√°√§√¢√®√©√´√™√¨√≠√Ø√Æ√≤√≥√∂√¥√π√∫√º√ª¬†¬©\"√ß<> ",
    has : function(c) {
       return this.indexOf(c) > -1;
    },
@@ -859,7 +859,7 @@ Object.merge(String.prototype,{
    },
    isPasswd: function ()
    {
-      var rexp=new RegExp("^[0-9a-zA-Z\$\*\%@ÁÈËÍÎ‡‰!\ßÔÓ˘_\-]{6,20}$", "gi");
+      var rexp=new RegExp("^[0-9a-zA-Z\$\*\%@√ß√©√®√™√´√†√§!\¬ß√Ø√Æ√π_\-]{6,20}$", "gi");
       return rexp.test(this);
    },
    isEmail: function ()
@@ -911,7 +911,7 @@ Object.merge(String.prototype,{
       var sTmp=this.replace(rexp, "");
       return sTmp.replace(/\&/gi, "et");
    },
-   ucWords: function () //PremiËre lettre de chaque mot en majuscule
+   ucWords: function () //Premi√®re lettre de chaque mot en majuscule
    {
       var tmp=new String(this);
       var tab=tmp.split(" ");
@@ -942,17 +942,17 @@ Object.merge(String.prototype,{
       var sRet=this.replace(/\<br( \/)?>/g, "\n");
       return sRet.replace(/\&nbsp\;\&nbsp\;\&nbsp\;/g, "\t");
    },
-   escapeRegexp: function () //Ajoute un \ devant tous les caractËres suceptibles d'Ítres interprÈtÈs ‡ l'intÈrieur d'une expression rÈguliËre : \, +, *, [, ], (, ), {, } et -.
+   escapeRegexp: function () //Ajoute un \ devant tous les caract√®res suceptibles d'√™tres interpr√©t√©s √† l'int√©rieur d'une expression r√©guli√®re : \, +, *, [, ], (, ), {, } et -.
    {
       var reg=new RegExp("([\\.\\\\\\+\\-\\*\\[\\]\\{\\}\\(\\)\\?\\$\\^])", "g");
       return this.replace(reg, "\\$1");
    },
-   unescapeRegexp: function () //Effectue le contraire de la fonction escapeRegex, c'est-‡-dire qu'elle efface les \ avant les caractËres suceptibles d'Ítre interprÈtÈs par une expression rÈguliËre.
+   unescapeRegexp: function () //Effectue le contraire de la fonction escapeRegex, c'est-√†-dire qu'elle efface les \ avant les caract√®res suceptibles d'√™tre interpr√©t√©s par une expression r√©guli√®re.
    {
       var reg=new RegExp("\\\\([\\.\\\\\\+\\-\\*\\[\\]\\{\\}\\(\\)\\?\\$\\^])", "g");
       return this.replace(reg, "$1");
    },
-   matches: function (s)  //La chaine vÈrifie-t-elle l'expression rÈguliËre passÈe en paramËtre ?
+   matches: function (s)  //La chaine v√©rifie-t-elle l'expression r√©guli√®re pass√©e en param√®tre ?
    {
       var reg=new RegExp(s);
       return reg.test(this);
@@ -1049,7 +1049,7 @@ Object.merge(String.prototype,{
    removeAccents: function ()
    {
       var str=""+this+"";
-      var a="¿¡¬√ƒ≈‡·‚„‰Â“”‘’÷ÿÚÛÙıˆ¯»… ÀËÈÍÎ«ÁÃÕŒœÏÌÓÔŸ⁄€‹˘˙˚¸ˇ—Ò›˝Ä";
+      var a="√Ä√Å√Ç√É√Ñ√Ö√†√°√¢√£√§√•√í√ì√î√ï√ñ√ò√≤√≥√¥√µ√∂√∏√à√â√ä√ã√®√©√™√´√á√ß√å√ç√é√è√¨√≠√Æ√Ø√ô√ö√õ√ú√π√∫√ª√º√ø√ë√±√∞√ù√Ω¬Ä";
       var b="AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNnoYyE";
       for (var i=0; i<a.length; i++)
          str=str.split(a.charAt(i)).join(b.charAt(i));
@@ -1115,11 +1115,11 @@ Object.merge(String.prototype,{
       else
          return this*this.rate;
    },
-   toE: function () //Conversion FF=>Ä
+   toE: function () //Conversion FF=>¬Ä
    {
       return this.convertEF("E");
    },
-   toF: function () //Conversion Ä=>FF
+   toF: function () //Conversion ¬Ä=>FF
    {
       return this.convertEF("F");
    },
@@ -1158,12 +1158,12 @@ Object.merge(String.prototype,{
    stripSlashes: function (){return this.replace(/\\("|'|\\)/g, '$1');},
 //   addSlashes: function (){return this.replace(/([""\\\.\|\[\]\^\*\+\?\$\(\)])/g, '\\$1');},
 //   stripSlashes: function (){return this.replace(/([""\\\.\|\[\]\^\*\+\?\$\(\)])/g, '$1');},
-   toBase10: function () //Passage de base dÈcimale en base "10" (par dÈfaut 16)
+   toBase10: function () //Passage de base d√©cimale en base "10" (par d√©faut 16)
    {
       var base=(arguments.length>0) ? arguments[0]:16;
       return parseInt(this, base);
    },
-   toBase: function () //Passage de base dÈcimale en base "b" (par dÈfaut 16) et renvoie au moins 2 caractËres
+   toBase: function () //Passage de base d√©cimale en base "b" (par d√©faut 16) et renvoie au moins 2 caract√®res
    {
       var b=(arguments.length>0) ? arguments[0]:16;
       if(parseInt(b)>36)
@@ -1227,7 +1227,7 @@ Object.merge(String.prototype,{
          output=output.replaceAll('=', '');
       return output;
    },
-   decode64: function () //DÈcodage en base64
+   decode64: function () //D√©codage en base64
    {
       if(this.length==0)
          return "";
@@ -1414,20 +1414,20 @@ Object.merge(Number.prototype,{
 });
 
 //Sur les dates
-//o : DÈcalage par rapport ‡ l'heure internationale exprimÈ en minutes
-//O : dÈcalage par rapport ‡ l'heure internationale, exprimÈ en heures
-//d : NumÈro du jour du mois, prÈcÈdÈ d'un 0 si nÈcessaire
-//D : NumÈro du jours du mois
-//m : NumÈro du mois de l'annÈe, prÈcÈdÈ d'un 0 si nÈcessaire
-//M : Nom du mois de l'annÈe
-//y : AnnÈe sur 2 chiffres
-//Y : annÈe sur 4 chiffres
-//h : Heure sur 12 heures, prÈcÈdÈs d'un 0 si nÈcessaire
-//H : heures sur 24 heures, prÈcÈdÈs d'un 0 si nÈcessaire
-//i : minutes prÈcÈdÈs d'un 0 si nÈcessaire
-//s : secondes prÈcÈdÈs d'un 0 si nÈcessaire
-//x : millisecondes prÈcÈdÈs d'un 0 si nÈcessaire
-//w : NumÈro du jour de la semaine entre 0 et 6
+//o : D√©calage par rapport √† l'heure internationale exprim√© en minutes
+//O : d√©calage par rapport √† l'heure internationale, exprim√© en heures
+//d : Num√©ro du jour du mois, pr√©c√©d√© d'un 0 si n√©cessaire
+//D : Num√©ro du jours du mois
+//m : Num√©ro du mois de l'ann√©e, pr√©c√©d√© d'un 0 si n√©cessaire
+//M : Nom du mois de l'ann√©e
+//y : Ann√©e sur 2 chiffres
+//Y : ann√©e sur 4 chiffres
+//h : Heure sur 12 heures, pr√©c√©d√©s d'un 0 si n√©cessaire
+//H : heures sur 24 heures, pr√©c√©d√©s d'un 0 si n√©cessaire
+//i : minutes pr√©c√©d√©s d'un 0 si n√©cessaire
+//s : secondes pr√©c√©d√©s d'un 0 si n√©cessaire
+//x : millisecondes pr√©c√©d√©s d'un 0 si n√©cessaire
+//w : Num√©ro du jour de la semaine entre 0 et 6
 //W : Nom du jour de la semaine
 (function(){
 var xformat={   o:function() {return this.getTimezoneOffset();},
@@ -1477,7 +1477,7 @@ Object.extend(Date.prototype, {
    isDate:function (){return true;},
    isArray:String.prototype.isArray,
    isUpper:function (a){return this>a;},
-   MONTH_NAMES: ["janvier", "fÈvrier", "mars", "avril", "mai", "juin", "juillet", "ao˚t", "septembre", "octobre", "novembre", "dÈcembre"],
+   MONTH_NAMES: ["janvier", "f√©vrier", "mars", "avril", "mai", "juin", "juillet", "ao√ªt", "septembre", "octobre", "novembre", "d√©cembre"],
    DAY_NAMES: ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"],
    TIME_DAY:1000*3600*24,
    IsPentecoteFerie:true,
@@ -1525,7 +1525,7 @@ Object.extend(Date.prototype, {
    firstDay:function (){return new Date(this.getFullYear(), this.getMonth(), 1);},
    //Dernier jour du mois
    lastDay:function (){return this.addMonth(1).addDay(-1);},
-   //Ajoute nb jours ouvrÈs
+   //Ajoute nb jours ouvr√©s
    addNDay:function (nb){
       var j=Math.abs(parseInt(nb));
       var s=parseInt(nb).sign();
@@ -1909,7 +1909,7 @@ Object.merge(Function.prototype,{
    }
 });
 //----------------------------------
-//---Fin dÈfinitions de prototype---
+//---Fin d√©finitions de prototype---
 //----------------------------------/*fin prototype.js*/ 
 //------------------------
 //---CRYPTAGE-------------
@@ -2412,7 +2412,7 @@ var md5 = {
    }
 };
 var Morse = {
-   letters:"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 &\PMC.utils.$\@\+\-_.,:;=?'-/()\"Ä\n\r\t",
+   letters:"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 &\PMC.utils.$\@\+\-_.,:;=?'-/()\"¬Ä\n\r\t",
    morse:Array(
        ".-","-...","-.-.","-..",".","..-.",
        "--.","....","..",".---","-.-",".-..",
@@ -2421,8 +2421,8 @@ var Morse = {
        "-.--","--..","-----",".----","..---",
        "...--","....-",".....","-....","--...",
        "---..","----."," ",
-       "∑-∑∑∑","∑∑∑-∑∑-","∑--∑-∑",".-.-.","-∑∑∑∑-","∑∑--∑-",".-.-.-","--..--","---...","-∑-∑-∑","-∑∑∑-","..--..",".----.","-....-","-..-.",
-       "-∑--∑","-.--.-",".-..-.", "...-.-.---", "\n", "\r", "\t"),
+       "¬∑-¬∑¬∑¬∑","¬∑¬∑¬∑-¬∑¬∑-","¬∑--¬∑-¬∑",".-.-.","-¬∑¬∑¬∑¬∑-","¬∑¬∑--¬∑-",".-.-.-","--..--","---...","-¬∑-¬∑-¬∑","-¬∑¬∑¬∑-","..--..",".----.","-....-","-..-.",
+       "-¬∑--¬∑","-.--.-",".-..-.", "...-.-.---", "\n", "\r", "\t"),
    crypt:function (sIn)
    {
       sIn=sIn.removeAccents().toUpperCase();
@@ -5172,14 +5172,14 @@ Object.merge(PMC.Collection.prototype, {
          callback(this[i]);
       }
    },
-   //Ajout d'un ÈlÈment
+   //Ajout d'un √©l√©ment
    add:function(elem)
    {
       this[this.nb]=elem;
       this.nb++;
       return;
    },
-   //Suppression d'un ÈlÈment
+   //Suppression d'un √©l√©ment
    remove:function(elem)
    {
       var bFound=false, j=0;
@@ -5493,12 +5493,12 @@ Object.extend(PMC.Key,{
       var elem=arguments.length>0 ? arguments[0] : this;
       var tempsClicEnCours = (new Date()).getTime();
       if ( (dernierClick == elem) && (tempsClicEnCours < tempsDernierClick + tempsEntreDeuxClics) ) {
-         dernierClick = null; // on remet ‡ zÈro
-         return true; // c'est bien un double-clic sur le mÍme objet
+         dernierClick = null; // on remet √† z√©ro
+         return true; // c'est bien un double-clic sur le m√™me objet
       }
       else {
          dernierClick = elem;
-         // pour Ítre s˚r de cliquer sur le mÍme objet
+         // pour √™tre s√ªr de cliquer sur le m√™me objet
          tempsDernierClick = tempsClicEnCours;
          return false; // c'est un simple clic pour le moment)
       }
@@ -5530,19 +5530,19 @@ Object.extend(PMC.Key,{
          }
       }
    },
-   //VÈrification de la lettre tapÈe
+   //V√©rification de la lettre tap√©e
    //o_key    : evenement
    //element  : champ texte
    verifString:function (o_key, element) {
-      var N = new RegExp("^[ÈËÍÎ‡‚‰ÔÓÁ˘Ùˆa-zA-Z0-9\ '-.%]");
+      var N = new RegExp("^[√©√®√™√´√†√¢√§√Ø√Æ√ß√π√¥√∂a-zA-Z0-9\ '-.%]");
       return self.returnCode(o_key, N.test(String.fromCharCode(self.recupCode(o_key))));
    },
-   //VÈrification de la lettre tapÈe
+   //V√©rification de la lettre tap√©e
    verifIdent:function (o_key, element) {
       var N = new RegExp("^[a-zA-Z0-9]");
       return self.returnCode(o_key, N.test(String.fromCharCode(self.recupCode(o_key))));
    },
-   //Mise en majuscule de la lettre tapÈe
+   //Mise en majuscule de la lettre tap√©e
    toUpper:function (o_key, element) {
       var N = new RegExp("^[a-zA-Z --'0-9]");
       if (N.test(String.fromCharCode(self.recupCode(o_key)))) {
@@ -5558,20 +5558,20 @@ Object.extend(PMC.Key,{
         return self.returnCode(o_key, true);
       }
    },
-   //Empeche la saisie de caractËres autres que des nombres entiers
+   //Empeche la saisie de caract√®res autres que des nombres entiers
    verifNumber:function (o_key, element) {
       var N = new RegExp("^[0-9]");
-      //Si la premiËre lettre tapÈe est le signe "-", on retourne vrai
+      //Si la premi√®re lettre tap√©e est le signe "-", on retourne vrai
       if((PMC.utils.getVal(element).length==0) && (self.recupCode(o_key) == 45)) {
          return self.returnCode(o_key, true);
       }
       return self.returnCode(o_key, N.test(String.fromCharCode(self.recupCode(o_key))));
    },
-   //Empeche la saisie de caractËres autres que des nombres dÈcimaux
+   //Empeche la saisie de caract√®res autres que des nombres d√©cimaux
    verifFloat:function (o_key, element) {
       var N = new RegExp("^[0-9.]");
       var tmp=PMC.utils.getVal(element).split(".");
-      //Si la premiËre lettre tapÈe est le signe "-", on retourne vrai
+      //Si la premi√®re lettre tap√©e est le signe "-", on retourne vrai
       if((PMC.utils.getVal(element).length==0) && (self.recupCode(o_key) == 45)) {
          return self.returnCode(o_key, true);
       }
@@ -5587,7 +5587,7 @@ Object.extend(PMC.Key,{
          return self.returnCode(o_key, false);
       }
    },
-   //Empeche la saisie de caractËres autres que des nombres hexadÈcimaux
+   //Empeche la saisie de caract√®res autres que des nombres hexad√©cimaux
    verifHexa:function (o_key, element) {
       var N = new RegExp("^[0-9a-fA-F%]");
       return self.returnCode(o_key, N.test(String.fromCharCode(self.recupCode(o_key))));
@@ -5615,7 +5615,7 @@ Object.extend(PMC.Key,{
 var self=PMC.Key;
 })();/*fin key.js*/ 
 //----------------------------
-//---Gestion des ÈvÈnements---
+//---Gestion des √©v√©nements---
 //----------------------------
 (function () {
 var saveFct=null;
@@ -5784,7 +5784,7 @@ var XHR=function() {
 
    var setXHR = function () {
       oXhr=createXHR();
-      //XMLHttpRequest non supportÈ par le navigateur. On ne l'affiche qu'une fois
+      //XMLHttpRequest non support√© par le navigateur. On ne l'affiche qu'une fois
       if (oXhr==null) {
          if(isFirstTime) {
             alert("Votre navigateur ne supporte pas les objets XMLHttpRequest...");
@@ -6011,7 +6011,7 @@ var download=function(method, url, fct, paramSend, paramRequest) {
    return xhr.download(paramSend);
 };
 
-//MÈthode GET
+//M√©thode GET
 self.get = function(url, fct, paramSend, paramRequest) {
    if(paramSend) {
       paramSend=paramSend.isArray ? paramSend.join("&") : paramSend;
@@ -6019,7 +6019,7 @@ self.get = function(url, fct, paramSend, paramRequest) {
    }
    return download("GET", url, fct, null, paramRequest);
 };
-//MÈthode POST
+//M√©thode POST
 self.post = function(url, fct, paramSend, paramRequest) {return download("POST", url, fct, paramSend, paramRequest);};
 })();
 /*fin xhr.js*/ 
@@ -6368,7 +6368,7 @@ Object.extend(PMC.DOM,{
       if(gid==document) {
          gid=gid.body;
       }
-      //sWhere=1 si ‡ la fin, 0 si au dÈbut
+      //sWhere=1 si √† la fin, 0 si au d√©but
       var p=document.createElement(balise);
       PMC.utils.forEachIn(aAttributes, function(nom, valeur) {
             if(nom.toLowerCase()!='html' && nom.toLowerCase()!='innerhtml') {
@@ -6418,7 +6418,7 @@ Object.extend(PMC.DOM,{
       if(balise==null) {
          balise="div";
       }
-      //sWhere=1 si ‡ la fin, 0 si au dÈbut
+      //sWhere=1 si √† la fin, 0 si au d√©but
       var p=document.createElement(balise);
       PMC.utils.forEach(aAttributes, function(elem){
             if(elem[0]=="style" && PMC.utils.navigator.ie) {
@@ -6511,7 +6511,7 @@ Object.merge(PMC.Config,{"detectConsole":function ()
 //------------------------
 //---NAV------------------
 //------------------------
-//IntÈgration de la librairie de navigation dans les pages
+//Int√©gration de la librairie de navigation dans les pages
 (function (){
 PMC.utils = PMC.utils || {};
 
@@ -6540,7 +6540,7 @@ Object.extend(PMC.utils,{
       }
       return true;
    },
-   //RÈcupÈration des ÈlÈments d'un formulaire ‡ envoyer en url
+   //R√©cup√©ration des √©l√©ments d'un formulaire √† envoyer en url
    ElemToUrl:function (frm, sSep, bReplace) {
       if(sSep==null) {
          sSep="&";
@@ -6595,7 +6595,7 @@ Object.extend(PMC.utils,{
       for(var i=0; i<aRet.length; i++)
         win.document.write("<input type=\"hidden\" name=\"p[]\" value=\""+aRet[i]+"\" />");
       win.document.write("\n<input type=\"submit\" value=\"T&#233;l&#233;charger\" class=\"envoi\" />\n");
-      win.document.write("<p id=\"end\"><a id=\"close\" onclick=\"javascript:window.close();\" title=\"Fermer la fenÍtre\" href=\"javascript:void(0);\">Fermer</a></p>\n");
+      win.document.write("<p id=\"end\"><a id=\"close\" onclick=\"javascript:window.close();\" title=\"Fermer la fen√™tre\" href=\"javascript:void(0);\">Fermer</a></p>\n");
       win.document.write("</form></div></body></html>");
       win.document.close();
       return true;
@@ -6803,7 +6803,7 @@ Object.extend(PMC.utils,{
       }
       return true;
    },
-   //Suppression d'un ÈlÈment
+   //Suppression d'un √©l√©ment
    delRow:function (elem, pere) {
       if(pere==null) {
          pere="tr";
@@ -6812,7 +6812,7 @@ Object.extend(PMC.utils,{
       row.parentNode.removeChild(row);
       return true;
    },
-   //DÈplacement de l'ÈlÈment vers le haut
+   //D√©placement de l'√©l√©ment vers le haut
    upRow:function (elem, pere) {
       if(pere==null) {
          pere="tr";
@@ -6832,7 +6832,7 @@ Object.extend(PMC.utils,{
       }
       return false;
    },
-   //DÈplacement de l'ÈlÈment vers le bas
+   //D√©placement de l'√©l√©ment vers le bas
    downRow:function (elem, pere) {
       if(pere==null) {
          pere="tr";
@@ -6885,7 +6885,7 @@ Object.extend(PMC.utils,{
    AddUrl: function (f) {self.AddTags(f, '[A]', '[/A]');return true;},
    AddBold:function (f) {self.AddTags(f, '[B]', '[/B]');return true;},
    AddSmiley:function (sInput, smiley) {self.AddTags(sInput, ' '+smiley+' ', '');return true;},
-   //Affiche le dÈtail ou non d'une liste de commentaires
+   //Affiche le d√©tail ou non d'une liste de commentaires
    afficheCommentaire:function (sid) {
       var gid=PMC.utils.$(sid);
       if(!gid) {
@@ -7045,7 +7045,7 @@ PMC.Page = PMC.Page || {};
 var self=PMC.Page;
 var chr=PMC.utils.chr;
 Object.merge(self, {
-   loaded:false, //loaded sert ‡ dÈterminer si la page est complËtement chargÈe (y compris les images, etc..)
+   loaded:false, //loaded sert √† d√©terminer si la page est compl√®tement charg√©e (y compris les images, etc..)
    titre:"Famille Coste",
    css:PMC.Config.css+"framework.css",
    auteur:function () {
@@ -7212,7 +7212,7 @@ Object.merge(self, {
       return true;
    },
    reload:function (){window.location.href=window.location.href.before("#");return;},
-   modifChamp:function (sSpan, oInput)  //affiche/cache un champ input et son libellÈ ==> cf date_crea, date_modif galerie
+   modifChamp:function (sSpan, oInput)  //affiche/cache un champ input et son libell√© ==> cf date_crea, date_modif galerie
    {
       sSpan=PMC.utils.$(sSpan);
       oInput=PMC.utils.$(oInput);
@@ -7233,7 +7233,7 @@ Object.merge(self, {
 //Gestion des suppressions d'enregistrements
 self.Delete = self.Delete || {};
 var sUrl="";          //URL de suppression
-var sRetour="";        //URL de retour ‡ la liste des pages
+var sRetour="";        //URL de retour √† la liste des pages
 var paramSubmit="";
 Object.merge(self.Delete, {
    lance:function (sid)
@@ -7260,7 +7260,7 @@ Object.merge(self.Delete, {
    },
    afterConfirmBeforeDelete:function (retXHR, param)
    {
-      param[0].href=param[1];//On remet l'url de dÈpart
+      param[0].href=param[1];//On remet l'url de d√©part
       sUrl=PMC.utils.getVal(retXHR.getElementsByTagName("url")[0]);
       sRetour=PMC.utils.getVal(retXHR.getElementsByTagName("retour")[0]);
       paramSubmit=PMC.utils.getVal(retXHR.getElementsByTagName("param")[0]);
@@ -7819,30 +7819,30 @@ if(PMC.utils.navigator.is_konqueror || PMC.utils.navigator.is_safari || PMC.util
 /*
  * argument:
  * {
- *   headerClass : class de l'ÈlÈment "dt" qui recevra les ÈvËnements. Si non existant, c'est tout l'objet DOM qui recevra les ÈvËnements.
- *   onLoad     : fonction exÈcutÈe au chargement de l'objet Drag.
- *   onStop     : fonction exÈcutÈe lors du relachement de la souris si on est en-dehors des objets Drop (objets permettant de recevoir les objets Drag)
+ *   headerClass : class de l'√©l√©ment "dt" qui recevra les √©v√®nements. Si non existant, c'est tout l'objet DOM qui recevra les √©v√®nements.
+ *   onLoad     : fonction ex√©cut√©e au chargement de l'objet Drag.
+ *   onStop     : fonction ex√©cut√©e lors du relachement de la souris si on est en-dehors des objets Drop (objets permettant de recevoir les objets Drag)
  *   listDrop   : contient la liste des objets Drop (contenant l'ensemble des conteneurs qui peuvent recevoir l'objet Drag)
- *   onDragOver  : fonction exÈcutÈe lorsque l'objet Drag passe sur un objet Drop
- *   onDragOut   : fonction exÈcutÈe lorsque l'objet Drag quitte un objet Drop
- *   onDrag     : fonction exÈcutÈe lorsque la souris est relachÈe sur un objet Drop
+ *   onDragOver  : fonction ex√©cut√©e lorsque l'objet Drag passe sur un objet Drop
+ *   onDragOut   : fonction ex√©cut√©e lorsque l'objet Drag quitte un objet Drop
+ *   onDrag     : fonction ex√©cut√©e lorsque la souris est relach√©e sur un objet Drop
  * }
 */
 //------------------------
 (function() {
 var initialize=function (oElem) {
    this.gid=PMC.utils.$(oElem);
-   //RÈcupÈration de l'ÈlÈment qui recevra les ÈvËnements
+   //R√©cup√©ration de l'√©l√©ment qui recevra les √©v√®nements
    if(this.gid.getElementsByTagName('dt').length>0 &&
          this.headerClass &&
          this.gid.getElementsByTagName('dt')[0].className==this.headerClass) {
       this.gidEvent=this.gid.getElementsByTagName('dt')[0];
    }
-   //on met le curseur "move" sur l'ÈlÈment qui recevra les ÈvËnements
+   //on met le curseur "move" sur l'√©l√©ment qui recevra les √©v√®nements
    PMC.Element.setStyle(this.gidEvent, {cursor:"move"});
-   //On rend l'ÈlÈment "absolu"
+   //On rend l'√©l√©ment "absolu"
    PMC.Element.relativize(this.gid);
-   //On rÈcupËre sa position
+   //On r√©cup√®re sa position
    var oDim=PMC.Element.setDimension(this.gid);
    this.position=oDim.position;
    this.dimension=oDim.dimension;
@@ -7850,11 +7850,11 @@ var initialize=function (oElem) {
    //this.position=[posElem[0].toNumber(), posElem[1].toNumber()];
    this.position_save=this.position;
 
-   //On applique les ÈvËnements "onLoad"
+   //On applique les √©v√®nements "onLoad"
    if(this.onLoad!=null) {
       this.onLoad.apply(this);
    }
-   //On lance les ÈvËnements
+   //On lance les √©v√®nements
    PMC.Event.add(this.gidEvent, "mousedown", this.start.bind(this));
    PMC.Event.add(this.gidEvent, "mouseup", this.stop.bind(this));
    //PMC.Event.add(this.gidEvent, "click", this.stop.bind(this));
@@ -7913,7 +7913,7 @@ Object.extend(PMC.utils.Drag.prototype,{
       this.gid.className=this.gid.className.replace(/dragged/gi,'');
       PMC.Element.setStyle(this.gid, {zIndex:1});
       if(this.dropObject!=null && this.onDrag) {
-         //On retire la class "hover" de l'ÈlÈment DROP
+         //On retire la class "hover" de l'√©l√©ment DROP
          this.dropObject.gid.className=this.dropObject.gid.className.replace(/ hover/gi, '');
          this.onDrag.call(this, this.dropObject);
       }
@@ -7927,7 +7927,7 @@ Object.extend(PMC.utils.Drag.prototype,{
          this.position=[PMC.Mouse.posX.toNumber()-this.delta[0], PMC.Mouse.posY.toNumber()-this.delta[1]];
          if(this.listDrop) {
             if(this.isDrop()) {
-               //On ajoute la class "hover" sur l'ÈlÈment Drop
+               //On ajoute la class "hover" sur l'√©l√©ment Drop
                if(!this.dropObject.gid.className.matches(/ hover/)) {
                   this.dropObject.gid.className+=' hover';
                }
@@ -7942,7 +7942,7 @@ Object.extend(PMC.utils.Drag.prototype,{
       }
    },
    out:function () {
-      //On retire la class "hover" de l'ÈlÈment DROP
+      //On retire la class "hover" de l'√©l√©ment DROP
       this.dropObject.gid.className=this.dropObject.gid.className.replace(/ hover/gi, '');
       //On applique la fonction onDragOut
       if(this.onDragOut!=null) {
@@ -8050,7 +8050,7 @@ Object.extend(PMC.utils.Drop.prototype,{
 //---CALENDRIER-----------
 //------------------------
 (function(){
-//IntÈgration de la librairie de gestion du calendrier
+//Int√©gration de la librairie de gestion du calendrier
 //PMC.Calendrier=PMC.Calendrier || {};
 //Liste des images contenues dans le calendrier
 var IMG={"apply":PMC.Config.img+"imgChqDej/IcoActualiser.gif",
@@ -8064,7 +8064,7 @@ var removeListeMonth=function()
       this.ListMonth=null;
    }
 };
-//CrÈation dans le DOM de la liste des mois
+//Cr√©ation dans le DOM de la liste des mois
 var createListeMonth=function(oDiv)
 {
    var liste=PMC.DOM.create(document.body, "div", {"class":"calendrier_listemois",
@@ -8104,7 +8104,7 @@ var createListeMonth=function(oDiv)
    return liste;
 };
 
-//CrÈation dans le DOM si le calendrier n'existe pas
+//Cr√©ation dans le DOM si le calendrier n'existe pas
 var createDom=function(bVisible)
 {
    Object.extend(this.style, {"display":(bVisible) ? "display:block" : "display:none"});
@@ -8112,7 +8112,7 @@ var createDom=function(bVisible)
                                     "style": PMC.utils.toCSS(this.style, ";")
                                    });
 };
-//PremiËre ligne : contient le mois en cours et l'annÈe
+//Premi√®re ligne : contient le mois en cours et l'ann√©e
 var enteteDate=function ()
 {
    var sRet="";
@@ -8181,7 +8181,7 @@ var enteteDate=function ()
                            }.bind(this, oDiv, oYear, oYearModif, oYearApply), false);
    return;
 };
-//DeuxiËme ligne : dÈplacement dans les annÈes, mois et retour au mois courant
+//Deuxi√®me ligne : d√©placement dans les ann√©es, mois et retour au mois courant
 var deplaceDate=function()
 {
    var oDeplace=PMC.DOM.create(this.gid, "div", {"class":"navigationBar deplaceCal"});
@@ -8209,7 +8209,7 @@ var deplaceDate=function()
 
    return;
 };
-//CrÈation du mois complet
+//Cr√©ation du mois complet
 var createBody=function()
 {
    var a=this.date.getFullYear();
@@ -8220,11 +8220,11 @@ var createBody=function()
    if(this.input) {
       iSaveJour=Date.prototype.set(PMC.utils.getVal(this.input)).format("%d/%m/%Y");
    }
-   //Gestion des jours fÈriÈs.
-   //Pour des raisons de performances, on rÈcupËre d'abord l'ensemble des jours fÈriÈs de l'annÈe, puis on ne ramËne que les jours du mois en cours
-   //Liste des jours fÈriÈs.
+   //Gestion des jours f√©ri√©s.
+   //Pour des raisons de performances, on r√©cup√®re d'abord l'ensemble des jours f√©ri√©s de l'ann√©e, puis on ne ram√®ne que les jours du mois en cours
+   //Liste des jours f√©ri√©s.
    var lFerie=this.date.listeFerie();
-   //Liste des jours fÈriÈs du mois en cours
+   //Liste des jours f√©ri√©s du mois en cours
    var ferieInMonth=[];
    var thisMonth=this.date.getMonth();
    PMC.utils.forEach(lFerie, function(elem){
@@ -8244,15 +8244,15 @@ var createBody=function()
    if(tmp<0) {
       tmp=6;
    }
-   //CrÈation en-tÍte
+   //Cr√©ation en-t√™te
    var ret="<table cellspacing=\"0\" cellpadding=\"0\">";
    ret+="<thead><tr><th class=\"firstColumn center\">W</th><th class=\"center\">L</th><th class=\"center\">M</th><th class=\"center\">M</th><th class=\"center\">J</th><th class=\"center\">V</th><th class=\"center\">S</th><th class=\"center\">D</th></tr></thead>";
    ret+="<tbody>";
-   //On met le N∞ de semaine uniquement si le premier jour n'est pas un lundi, sinon, il sera mis plus loin
+   //On met le N¬∞ de semaine uniquement si le premier jour n'est pas un lundi, sinon, il sera mis plus loin
    if(tmp>0) {
       ret+="<tr><td class=\"center firstColumn\">"+this.date.firstDay().getWeek()+"</td>";
    }
-   //On rÈpËte les espaces blancs jusqu'au 1er jour du mois
+   //On r√©p√®te les espaces blancs jusqu'au 1er jour du mois
    ret+=("<td>"+PMC.utils.chr(160)+"</td>").repeat(tmp);
    var dDate=new Date();
    for(var i=1;i<=parseInt(fin);i++)
@@ -8280,7 +8280,7 @@ var createBody=function()
       }
       tmp=(tmp+1)%7;
    }
-   //On rÈpËte les espaces blancs jusqu'au dimanche
+   //On r√©p√®te les espaces blancs jusqu'au dimanche
    if(tmp>0) {
       ret+=("<td>"+PMC.utils.chr(160)+"</td>").repeat(7-tmp);
       ret+="</tr>";
@@ -8288,7 +8288,7 @@ var createBody=function()
    ret+="</tbody>";
    ret+="</table>";
    var oDiv=PMC.DOM.create(this.gid, "div", {"class":"monthview", "innerHTML":ret});
-   //On ajoute les ÈvËnements sur le click de chaque jour
+   //On ajoute les √©v√®nements sur le click de chaque jour
    var all=PMC.utils.getClass("date", oDiv);
    PMC.utils.forEach(all, function(elem){PMC.Event.add(elem, "click", afterClick.bind(this), true);}.bind(this));
    /*
@@ -8301,7 +8301,7 @@ var createBody=function()
 //Dessine le mois complet
 var draw=function(bVisible)
 {
-   //S'il n'existe pas, on crÈÈ le "div"
+   //S'il n'existe pas, on cr√©√© le "div"
    if(this.gid==null) {
       createDom.call(this, bVisible);
    }
@@ -8309,16 +8309,16 @@ var draw=function(bVisible)
    PMC.DOM.removeChildren(this.gid, "div");
    //On supprime la liste des mois si elle existe
    removeListeMonth.apply(this);
-   //Puis on recrÈÈ l'en-tÍte
+   //Puis on recr√©√© l'en-t√™te
    enteteDate.apply(this);
-   //On recrÈÈ les dÈplacements dans les annÈes
+   //On recr√©√© les d√©placements dans les ann√©es
    deplaceDate.apply(this);
-   //On recrÈÈ les jours
+   //On recr√©√© les jours
    createBody.apply(this);
    return;
 };
-//DÈclenchement de cette procÈdure aprËs click sur chaque jour.
-//On exÈcute alors l'ensemble des fonctions passÈes en argument
+//D√©clenchement de cette proc√©dure apr√®s click sur chaque jour.
+//On ex√©cute alors l'ensemble des fonctions pass√©es en argument
 var afterClick=function (e)
 {
    PMC.utils.forEach(this.func, function(elem){
@@ -8338,20 +8338,20 @@ var remove=function ()
    this.gid=null;
    return;
 };
-//Fonction de dÈplacement dans les mois et les annÈes
-//Retour ‡ la date du jour
+//Fonction de d√©placement dans les mois et les ann√©es
+//Retour √† la date du jour
 var today=function()
 {
    this.date.set(PMC.Config.today.format("%d/%m/%Y"));
    this.draw();
 };
-//AnnÈe prÈcÈdente
+//Ann√©e pr√©c√©dente
 var previousY=function()
 {
    this.date.setYear(this.date.getFullYear()-1);
    this.draw();
 };
-//Mois prÈcÈdent
+//Mois pr√©c√©dent
 var previousM=function()
 {
    this.date.setMonth(this.date.getMonth()-1);
@@ -8363,7 +8363,7 @@ var nextM=function()
    this.date.setMonth(this.date.getMonth()+1);
    this.draw();
 };
-//AnnÈe suivante
+//Ann√©e suivante
 var nextY=function()
 {
    this.date.setYear(this.date.getFullYear()+1);
@@ -8381,7 +8381,7 @@ var deplaceCalendrier=function()
    var position=PMC.Element.cumulativeOffset(this.input);
    PMC.Element.moveTo(this.gid, position[0], position[1]+22);
 };
-//CrÈation de l'objet PMC.Calendrier
+//Cr√©ation de l'objet PMC.Calendrier
 PMC.Calendrier=function (oPere)
 {
    this.pere=oPere || document.body;
@@ -8389,12 +8389,12 @@ PMC.Calendrier=function (oPere)
    this.date.set(PMC.Config.today.format("%d/%m/%Y"));
    this.gid=null;
    this.func=[];
-   this.ListMonth=null; //Liste des mois de l'annÈe pour changement de mois
+   this.ListMonth=null; //Liste des mois de l'ann√©e pour changement de mois
    this.buttonClose=false;
    this.style={};
 };
 Object.extend(PMC.Calendrier.prototype,{
-   //Ajout de fonctions lors du click sur un jour spÈcifique
+   //Ajout de fonctions lors du click sur un jour sp√©cifique
    addFunction:function(fct, args)
    {
       if(!args) {
@@ -8429,13 +8429,13 @@ Object.extend(PMC.Calendrier.prototype,{
    {
       PMC.Element.visible(this.gid) ? this.hide() : this.show();
    },
-   //Supprime le calendrier en Èvitant les effets de transparence pour l'affichage
+   //Supprime le calendrier en √©vitant les effets de transparence pour l'affichage
    remove:function()
    {
       removeListeMonth.apply(this);
       remove.call(this);
    },
-   //Dessine le calendrier en Èvitant les effets de transparence pour l'affichage
+   //Dessine le calendrier en √©vitant les effets de transparence pour l'affichage
    draw:function()
    {
       draw.call(this, true);
@@ -8614,7 +8614,7 @@ Object.extend(PMC.Image,{
       if (tabImg.length>0) {
          refresh();
       }
-      else { //Toutes les images sont chargÈes, on exÈcute les fonctions d'aprËs chargement
+      else { //Toutes les images sont charg√©es, on ex√©cute les fonctions d'apr√®s chargement
          afterLoading.exec();
       }
       return;
@@ -8639,7 +8639,7 @@ Object.extend(PMC.Image,{
 });
 })();/*fin image.js*/ 
 //----------------------------------
-//---Lancement ÈvËnements-----------
+//---Lancement √©v√®nements-----------
 //---Initialisation des variables---
 //----------------------------------
 PMC.Page.onLoad=new PMC.utils.loading();
@@ -8689,7 +8689,7 @@ window.onerror=function (nouvelle,fichier,ligne){PMC.Page.msgError(nouvelle,fich
 //---MSGBOX---------------
 //------------------------
 (function(){
-//Largeur par dÈfaut des boutons
+//Largeur par d√©faut des boutons
 var buttonWidth=100;
 //Liste d'instances
 var currentInstances = new PMC.Collection();
@@ -8713,7 +8713,7 @@ var remove=function() {
       PMC.DOM.remove(this.gidpopin);
    }
 };
-//Si la popin doit Ítre supprimÈe, on la supprime sinon on la cache
+//Si la popin doit √™tre supprim√©e, on la supprime sinon on la cache
 var close=function() {
    if(this.removeAfterClose) {
       remove.apply(this);
@@ -8733,7 +8733,7 @@ var move=function() {
    }
    return;
 };
-//Lance l'exÈcution des fonctions aprËs clique sur le bouton correspondant
+//Lance l'ex√©cution des fonctions apr√®s clique sur le bouton correspondant
 var exec=function(idButton) {
    if(this.button[idButton]!=null) {
       if(this.button[idButton].fct) {
@@ -8775,7 +8775,7 @@ var drawButton=function (gid) {
    var ret="";
    var nbButton=allButton.apply(this);
    for(var i in this.button) {
-      //On enlËve 2px de large car il y a une bordure de 1px
+      //On enl√®ve 2px de large car il y a une bordure de 1px
       var css="display:block;float:left;padding:0.3em 0 0.4em 0;width:"+(this.button[i].width.toNumber()-2)+"px;height:1em;text-align:center;margin:";
       css+="0 0 0 "+((this.getWidth()-nbButton.width)/(nbButton.nb+1))+"px;";
       var myButton=PMC.DOM.create(gid, "a", { "class":"button",
@@ -8852,13 +8852,13 @@ var createPopin=function() {
                                                    "style":"margin-left:0.3em"
                                                   });
    }
-   //On crÈÈ une div pour les boutons de la popin
+   //On cr√©√© une div pour les boutons de la popin
    if(this.button!={}) {
       var oButton=PMC.DOM.create(this.gid, "div", {"class":"button"});
       //On ajoute les boutons dans cette div
       drawButton.call(this, oButton);
    }
-   //Appel xhr s'il y a une url ‡ appeler
+   //Appel xhr s'il y a une url √† appeler
    if(this.url) {
       PMC.xhr.post(this.url, afterXHR.bind(this), null, this.urlParam);
    }
@@ -8887,7 +8887,7 @@ PMC.MsgBox = function() {
 };
 //Extensions du constructeur
 Object.extend(PMC.MsgBox.prototype, {
-   //On ajoute des boutons ‡ la popin
+   //On ajoute des boutons √† la popin
    addButton:function(oButton)    {
       for(var i in oButton) {
          if(oButton[i]) {
@@ -8903,7 +8903,7 @@ Object.extend(PMC.MsgBox.prototype, {
       }
       return this.button;
    },
-   //On supprime le bouton ‡ la popin
+   //On supprime le bouton √† la popin
    delButton:function(sidButton) {
       for(var i in this.button) {
          if(i==sidButton) {
@@ -8912,7 +8912,7 @@ Object.extend(PMC.MsgBox.prototype, {
       }
       return;
    },
-   //On affiche la popin. Si elle n'existe pas dans le DOM, on la crÈÈ.
+   //On affiche la popin. Si elle n'existe pas dans le DOM, on la cr√©√©.
    show:function() {
       if(!this.gid) {
          createPopin.apply(this);
@@ -8942,7 +8942,7 @@ PMC.MsgBox.move=function() {
       move.apply(currentInstances[i]);
    }*/
 };
-//On cache la derniËre popin visible
+//On cache la derni√®re popin visible
 PMC.MsgBox.close=function() {
    var i=currentInstances.nb-1;
    while(i>=0 && !PMC.Element.visible(currentInstances[i].gid)) {
@@ -8953,7 +8953,7 @@ PMC.MsgBox.close=function() {
    }
    return;
 };
-//On crÈÈ une popin
+//On cr√©√© une popin
 PMC.MsgBox.popin=function(message, title, dimension, button) {
    var myPopin=new PMC.MsgBox();
    myPopin.title=title || myPopin.title;
@@ -9050,7 +9050,7 @@ window.prompt=PMC.MsgBox.prompt;/*fin msgbox.js*/
 //---API------------------
 //------------------------
 (function () {
-//R√©cup√©ration de l'url de la frame m√®re
+//R√É¬©cup√É¬©ration de l'url de la frame m√É¬®re
 //var p=(function() {
 //   return (function() {
 //      var g=function(w, p) {
@@ -9060,7 +9060,7 @@ window.prompt=PMC.MsgBox.prompt;/*fin msgbox.js*/
 //   })();
 //})();
 var p=window;
-var KEY={"pmcoste.hd.free.fr":"BRjQWpxVMKxBTmY5TRnqij3OsosdAj4d", "localhost":"BRjQWpxVMKxBTmY5TRnqij3OsosdAj4d", "grp-fr-mis-zu1.bmf.net":"BRjQWpxVMKxBTmY5TRnqij3OsosdAj4d"};
+var KEY={"localhost":"BRjQWpxVMKxBTmY5TRnqij3OsosdAj4d"};
 var getScript=(function() {
    var ret='';
    PMC.utils.forEach(document.getElementsByTagName("script"), function(elem) {
@@ -9096,19 +9096,19 @@ var getServer=function() {
    }
 };
 if(KEY[getServer()]!=getKey) {
-   PMC.utils.debug("Votre cl√© n'est pas valide. Merci d'en demander une.");
+   PMC.utils.debug("Votre cl√É¬© n'est pas valide. Merci d'en demander une.");
    PMC={};
    PMC={"utils":{"$":function(){}}, "Page":{"onLoad":{"add":function(){}, "exec":function(){}}}, "xhr":{"get":function(){}, "post":function(){}}, "onLoad":{"add":function(){}, "exec":function(){}}, "Config":{"fmwk":""}, "DOM":{"loaded":false}};
 }
 })();
 /*fin api.js*/ 
 //------------------------
-//---Listes dÈroulantes---
+//---Listes d√©roulantes---
 //------------------------
 (function (){
 PMC.Liste = PMC.Liste || {};
 Object.extend(PMC.Liste,{
-   //VÈrifie qu'un ÈlÈment est dans une liste
+   //V√©rifie qu'un √©l√©ment est dans une liste
    get:function (element, liste)
    {
       var i=0;
@@ -9124,7 +9124,7 @@ Object.extend(PMC.Liste,{
       }
       return i;
    },
-   //Ajoute un ÈlÈment dans une liste
+   //Ajoute un √©l√©ment dans une liste
    add: function (element, liste) {
       if(typeof element=="string") {
          element.value=(element.text=element);
@@ -9141,14 +9141,14 @@ Object.extend(PMC.Liste,{
       }
       return i;
    },
-   //Suppression d'un ÈlÈment dans une liste ‡ partir de son n∞ de ligne
+   //Suppression d'un √©l√©ment dans une liste √† partir de son n¬∞ de ligne
    del:function (index_i, liste) {
       if (index_i<liste.length) {
          liste.removeChild(liste[index_i]);
       }
       return true;
    },
-   //Suppression d'un ÈlÈment sÈlectionnÈ dans une liste ‡ partir de sa valeur
+   //Suppression d'un √©l√©ment s√©lectionn√© dans une liste √† partir de sa valeur
    delByVal:function (val, liste) {
       var i=self.get(val, liste);
       if (i<liste.length) {
@@ -9156,7 +9156,7 @@ Object.extend(PMC.Liste,{
       }
       return true;
    },
-   //Supression de tous les ÈlÈments sÈlectionnÈs d'une liste
+   //Supression de tous les √©l√©ments s√©lectionn√©s d'une liste
    delSelected:function (liste) {
       for (var i=liste.length-1;i>=0; i--) {
          if(liste[i].selected) {
@@ -9165,7 +9165,7 @@ Object.extend(PMC.Liste,{
       }
       return true;
    },
-   //Ajoute les ÈlÈments sÈlectionnÈs d'une liste dans l'autre liste
+   //Ajoute les √©l√©ments s√©lectionn√©s d'une liste dans l'autre liste
    addSelected:function (list1, list2) {
       for (var i = list1.length - 1; i >= 0; i--) {
          if (list1[i].selected && self.get(list1[i], list2)>=list2.length) {
@@ -9175,15 +9175,15 @@ Object.extend(PMC.Liste,{
       }
       return true;
    },
-   //Bascule les ÈlÈments sÈlectionnÈs d'une liste dans l'autre liste
+   //Bascule les √©l√©ments s√©lectionn√©s d'une liste dans l'autre liste
    change:function (list1, list2) {
-      //DÈfinit la liste par dÈfaut si besoin
+      //D√©finit la liste par d√©faut si besoin
       var list3=arguments.length>2 ? arguments[2] : null;
       var j = 0;
       for (var i=list1.length-1;i>=0;i--) {
          if (self.get(list1[i], list2)>=list2.length) {
             if (list1[i].selected) {
-               //Supprime l'ÈlÈment dans la liste par dÈfaut si la liste et l'ÈlÈment existent
+               //Supprime l'√©l√©ment dans la liste par d√©faut si la liste et l'√©l√©ment existent
                if(list3 && (self.get(list1[i], list3)<list3.length)) {
                   self.delByVal(list1[i].value, list3);
                }
@@ -9195,15 +9195,15 @@ Object.extend(PMC.Liste,{
             }
          }
          else {
-            alert("Cet ÈlÈment est dÈj‡ insÈrÈ !");
+            alert("Cet √©l√©ment est d√©j√† ins√©r√© !");
          }
       }
       if (j==0) {
-         alert("Aucun ÈlÈment sÈlectionnÈ !");
+         alert("Aucun √©l√©ment s√©lectionn√© !");
       }
       return true;
    },
-   //Ajoute un ÈlÈment ‡ partir d'un flux XML
+   //Ajoute un √©l√©ment √† partir d'un flux XML
    loadXML:function (fluxXML, sid, noeud) {
       var liste=$(sid);
       liste.length=0;
@@ -9229,7 +9229,7 @@ Object.extend(PMC.Liste,{
       }
       return true;
    },
-   //DÈplace des ÈlÈments sÈlectionnÈs dans une liste
+   //D√©place des √©l√©ments s√©lectionn√©s dans une liste
    changePos:function (sid, nb) {
       var elem=$(sid);
       if(!nb) {
@@ -10183,3 +10183,4 @@ return saveAs;
 })();
 
 /*fin FileSaver.js*/ 
+
