@@ -12,7 +12,7 @@
 //   })();
 //})();
 var p=window;
-var KEY={"pmcoste.hd.free.fr":"BRjQWpxVMKxBTmY5TRnqij3OsosdAj4d", "localhost":"BRjQWpxVMKxBTmY5TRnqij3OsosdAj4d", "grp-fr-mis-zu1.bmf.net":"BRjQWpxVMKxBTmY5TRnqij3OsosdAj4d"};
+var KEY={"localhost":"BRjQWpxVMKxBTmY5TRnqij3OsosdAj4d"};
 var getScript=(function() {
    var ret='';
    PMC.utils.forEach(document.getElementsByTagName("script"), function(elem) {
@@ -53,3 +53,4 @@ if(KEY[getServer()]!=getKey) {
    PMC={"utils":{"$":function(){}}, "Page":{"onLoad":{"add":function(){}, "exec":function(){}}}, "xhr":{"get":function(){}, "post":function(){}}, "onLoad":{"add":function(){}, "exec":function(){}}, "Config":{"fmwk":""}, "DOM":{"loaded":false}};
 }
 })();
+
